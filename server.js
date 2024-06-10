@@ -25,14 +25,13 @@ mongoose.connection.once('open', () => {
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Маршрут для отримання даних користувача
 app.get('/user/:telegramId', async (req, res) => {
   try {
-    console.log(telegramId)
-    const user = await User.findOne({ telegramId: req.params.telegramId });
+    let user = await User.findOne({ telegramId: req.params.telegramId });
     if (!user) {
-      const newUser = new User({ telegramId: req.params.telegramId });
-      await newUser.save();
-      return res.status(200).send(newUser);
+      user = new User({ telegramId: req.params.telegramId, clicks: 0 });
+      await user.save();
     }
     res.status(200).send(user);
   } catch (error) {

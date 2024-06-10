@@ -30,8 +30,8 @@
     fetch(`/user/${telegramId}`)
       .then(response => response.json())
       .then(data => {
-        console.log('User data loaded:', data); // Додано для дебагу
-        clickCount = data.clicks || 0; // Якщо значення null або undefined, встановити 0
+        console.log('User data loaded:', data);
+        clickCount = data.clicks; // Встановлення поточної кількості кліків користувача
         clickCountDisplay.textContent = clickCount;
       })
       .catch(error => console.error('Error:', error));
@@ -40,7 +40,7 @@
       clickCount++;
       clickCountDisplay.textContent = clickCount;
 
-      console.log(`Sending click data: telegramId=${telegramId}, count=${clickCount}`); // Додано для дебагу
+      console.log(`Sending click data: telegramId=${telegramId}, count=${clickCount}`);
 
       // Надсилання даних про клік на сервер
       fetch('/click', {
@@ -51,7 +51,7 @@
         body: JSON.stringify({ telegramId, count: clickCount })
       })
       .then(response => response.json())
-      .then(data => console.log('Click data saved:', data)) // Додано для дебагу
+      .then(data => console.log('Click data saved:', data))
       .catch(error => console.error('Error:', error));
     });
   </script>
