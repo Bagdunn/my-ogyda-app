@@ -8,7 +8,7 @@ const app = express();
 const port = 3000;
 
 // Підключення до MongoDB
-mongoose.connect('mongodb+srv://Bahdun:root@cluster0.tqg11xz.mongodb.net/', {
+mongoose.connect('mongodb+srv://Bahdun:root@cluster0.tqg11xz.mongodb.net/Ogyda', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -38,6 +38,6 @@ app.post('/click', async (req, res) => {
 // Встановлення порту
 const PORT = process.env.PORT || 3000;
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
