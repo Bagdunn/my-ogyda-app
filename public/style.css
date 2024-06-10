@@ -1,25 +1,27 @@
+/* styles.css */
+
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
-  }
-  
-  #app {
-    text-align: center;
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  #click-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    margin-top: 20px;
-    cursor: pointer;
-    touch-action: manipulation; /* Відключення масштабування на подвійне натискання */
-  }
+  font-family: Arial, sans-serif;
+  text-align: center; /* Центрування тексту */
+}
+
+#game {
+  margin-top: 50px; /* Відступ зверху для центрування */
+}
+
+#click-button {
+  width: 200px; /* Ширина кнопки */
+  height: 200px; /* Висота кнопки */
+  border-radius: 50%; /* Зробити кнопку круглою */
+  font-size: 24px; /* Розмір тексту на кнопці */
+  touch-action: manipulation; /* Відключення масштабування на подвійне натискання */
+}
+
+#click-count {
+  font-size: 20px; /* Розмір тексту з кліками */
+}
+
+h1 {
+  font-size: 36px; /* Розмір заголовку */
+}
+    
