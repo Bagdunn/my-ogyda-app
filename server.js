@@ -27,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/user/:telegramId', async (req, res) => {
   try {
+    console.log(telegramId)
     const user = await User.findOne({ telegramId: req.params.telegramId });
     if (!user) {
       const newUser = new User({ telegramId: req.params.telegramId });
@@ -41,10 +42,15 @@ app.get('/user/:telegramId', async (req, res) => {
 
 // Маршрут для зберігання кліків
 app.post('/click', async (req, res) => {
-  const click = new Click({ count: req.body.count });
+  const { telegramId, count } = req.body;
   try {
-    await click.save();
-    res.status(201).send(click);
+    const user = await User.findOne({ telegramId });
+    if (!user) {
+      return res.status(404).send('User not found');
+    }
+    user.clicks = count;
+    await user.save();
+    res.status(200).send(user);
   } catch (error) {
     res.status(400).send(error);
   }

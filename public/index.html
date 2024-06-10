@@ -32,7 +32,8 @@
       .then(data => {
         clickCount = data.clicks;
         clickCountDisplay.textContent = clickCount;
-      });
+      })
+      .catch(error => console.error('Error:', error));
 
     clickButton.addEventListener('click', () => {
       clickCount++;
@@ -45,7 +46,8 @@
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ telegramId, count: clickCount })
-      });
+      })
+      .catch(error => console.error('Error:', error));
     });
   </script>
 </body>
