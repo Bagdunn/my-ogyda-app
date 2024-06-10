@@ -24,22 +24,23 @@
     let clickCount = 0;
     const clickButton = document.getElementById('click-button');
     const clickCountDisplay = document.getElementById('click-count');
-    const telegramId = String(tg.initDataUnsafe.user.id); // Отримання Telegram ID користувача
-
-    console.log('Telegram ID:', telegramId);
+    const telegramId = tg.initDataUnsafe.user.id; // Отримання Telegram ID користувача
 
     // Завантаження даних користувача з сервера
     fetch(`/user/${telegramId}`)
-  .then(response => response.json())
-  .then(data => {
-    console.log('User data loaded:', data);
-    clickCount = data.clicks;
-    clickCountDisplay.textContent = clickCount;
-  })
-  .catch(error => console.error('Error:', error));
+      .then(response => response.json())
+      .then(data => {
+        console.log('User data loaded:', data); // Додано для дебагу
+        clickCount = data.clicks || 0; // Якщо значення null або undefined, встановити 0
+        clickCountDisplay.textContent = clickCount;
+      })
+      .catch(error => console.error('Error:', error));
+
     clickButton.addEventListener('click', () => {
       clickCount++;
       clickCountDisplay.textContent = clickCount;
+
+      console.log(`Sending click data: telegramId=${telegramId}, count=${clickCount}`); // Додано для дебагу
 
       // Надсилання даних про клік на сервер
       fetch('/click', {
@@ -50,8 +51,8 @@
         body: JSON.stringify({ telegramId, count: clickCount })
       })
       .then(response => response.json())
-      .then(data => console.log('Click data saved:', data))
-      .catch(error => console.error('Error saving click data:', error));
+      .then(data => console.log('Click data saved:', data)) // Додано для дебагу
+      .catch(error => console.error('Error:', error));
     });
   </script>
 </body>
