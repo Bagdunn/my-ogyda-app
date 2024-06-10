@@ -21,4 +21,5 @@ body {
     font-size: 16px;
     margin-top: 20px;
     cursor: pointer;
+    touch-action: manipulation; /* Відключення масштабування на подвійне натискання */
   }
