@@ -3,16 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clicker Game</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Telegram Web App Game</title>
+  <style>
+    /* Додайте свій CSS тут */
+  </style>
 </head>
 <body>
-  <div id="app">
-    <h1>Clicker Game</h1>
-    <div id="score">Score: 0</div>
-    <div id="energy">Energy: 100</div>
+  <h1>Welcome to the Clicker Game!</h1>
+  <div id="game">
+    <!-- Ваші елементи гри тут -->
     <button id="click-button">Click me!</button>
+    <p>Clicks: <span id="click-count">0</span></p>
   </div>
-  <script src="script.js"></script>
+
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand(); // Розширення Web App на повний екран
+
+    let clickCount = 0;
+    const clickButton = document.getElementById('click-button');
+    const clickCountDisplay = document.getElementById('click-count');
+    const telegramId = tg.initDataUnsafe.user.id; // Отримання Telegram ID користувача
+
+    // Завантаження даних користувача з сервера
+    fetch(`/user/${telegramId}`)
+      .then(response => response.json())
+      .then(data => {
+        clickCount = data.clicks;
+        clickCountDisplay.textContent = clickCount;
+      });
+
+    clickButton.addEventListener('click', () => {
+      clickCount++;
+      clickCountDisplay.textContent = clickCount;
+
+      // Надсилання даних про клік на сервер
+      fetch('/click', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ telegramId, count: clickCount })
+      });
+    });
+  </script>
 </body>
 </html>

@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
 const Click = require('./models/Click');
+const User = require('./models/User');
 
 const app = express();
 const port = 3000;
@@ -23,6 +24,20 @@ mongoose.connection.once('open', () => {
 // Середовища для парсингу JSON та статичних файлів
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/user/:telegramId', async (req, res) => {
+  try {
+    const user = await User.findOne({ telegramId: req.params.telegramId });
+    if (!user) {
+      const newUser = new User({ telegramId: req.params.telegramId });
+      await newUser.save();
+      return res.status(200).send(newUser);
+    }
+    res.status(200).send(user);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
 
 // Маршрут для зберігання кліків
 app.post('/click', async (req, res) => {
