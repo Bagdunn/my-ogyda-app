@@ -43,6 +43,7 @@ app.get('/user/:telegramId', async (req, res) => {
 // Маршрут для зберігання кліків
 app.post('/click', async (req, res) => {
   const { telegramId, count } = req.body;
+  console.log(`Received click data: telegramId=${telegramId}, count=${count}`);
   try {
     const user = await User.findOne({ telegramId });
     if (!user) {
@@ -52,6 +53,7 @@ app.post('/click', async (req, res) => {
     await user.save();
     res.status(200).send(user);
   } catch (error) {
+    console.log('Error saving clicks:', error);
     res.status(400).send(error);
   }
 });

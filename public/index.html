@@ -24,17 +24,19 @@
     let clickCount = 0;
     const clickButton = document.getElementById('click-button');
     const clickCountDisplay = document.getElementById('click-count');
-    const telegramId = tg.initDataUnsafe.user.id; // Отримання Telegram ID користувача
+    const telegramId = String(tg.initDataUnsafe.user.id); // Отримання Telegram ID користувача
+
+    console.log('Telegram ID:', telegramId);
 
     // Завантаження даних користувача з сервера
     fetch(`/user/${telegramId}`)
-      .then(response => response.json())
-      .then(data => {
-        clickCount = data.clicks;
-        clickCountDisplay.textContent = clickCount;
-      })
-      .catch(error => console.error('Error:', error));
-
+  .then(response => response.json())
+  .then(data => {
+    console.log('User data loaded:', data);
+    clickCount = data.clicks;
+    clickCountDisplay.textContent = clickCount;
+  })
+  .catch(error => console.error('Error:', error));
     clickButton.addEventListener('click', () => {
       clickCount++;
       clickCountDisplay.textContent = clickCount;
@@ -47,7 +49,9 @@
         },
         body: JSON.stringify({ telegramId, count: clickCount })
       })
-      .catch(error => console.error('Error:', error));
+      .then(response => response.json())
+      .then(data => console.log('Click data saved:', data))
+      .catch(error => console.error('Error saving click data:', error));
     });
   </script>
 </body>
