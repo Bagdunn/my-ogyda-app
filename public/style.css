@@ -17,8 +17,8 @@ body {
   touch-action: manipulation; /* Відключення масштабування на подвійне натискання */
 }
 
-#click-count {
-  font-size: 20px; /* Розмір тексту з кліками */
+#click-count, #energy {
+  font-size: 18px; /* Розмір тексту з кліками та енергією */
 }
 
 h1 {
