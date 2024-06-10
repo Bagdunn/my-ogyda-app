@@ -3,6 +3,7 @@
 body {
   font-family: Arial, sans-serif;
   text-align: center; /* Центрування тексту */
+  background-color: #f0f0f0; /* Колір фону */
 }
 
 #game {
@@ -24,4 +25,35 @@ body {
 h1 {
   font-size: 36px; /* Розмір заголовку */
 }
+
+/* Медіа-запит для мобільних пристроїв */
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: #fff; /* Змінити фон на білий на мобільних пристроях */
+  }
+
+  #game {
+    margin-top: 20px; /* Зменшити відступ зверху */
+  }
+
+  #click-button {
+    width: 150px; /* Зменшити ширину кнопки */
+    height: 150px; /* Зменшити висоту кнопки */
+    touch-action: manipulation; /* Відключення масштабування на подвійне натискання */
+  }
+
+  #click-count, #energy {
+    font-size: 14px; /* Зменшити розмір тексту з кліками та енергією */
+  }
+
+  h1 {
+    font-size: 24px; /* Зменшити розмір заголовку */
+  }
+}
+
+
+
+
+
+/*touch-action: manipulation; /* Відключення масштабування на подвійне натискання */
     
