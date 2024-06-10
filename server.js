@@ -8,7 +8,7 @@ const app = express();
 const port = 3000;
 
 // Підключення до MongoDB
-mongoose.connect('mongodb://localhost:27017/myclickerdb', {
+mongoose.connect('mongodb+srv://Bahdun:root@cluster0.tqg11xz.mongodb.net/', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
