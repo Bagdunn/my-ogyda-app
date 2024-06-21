@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
-const Click = require('./models/Click');
 const User = require('./models/User');
 
 const app = express();

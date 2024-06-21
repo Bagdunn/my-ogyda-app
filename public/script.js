@@ -10,8 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
   fetch(`/user/${telegramId}`)
       .then(response => response.json())
       .then(data => {
-          score = data.clicks;
-          energy = data.energy;
+          console.log('User data:', data);
+          score = data.clicks || 0;
+          energy = data.energy || 100;
           updateDisplay();
       })
       .catch(error => {

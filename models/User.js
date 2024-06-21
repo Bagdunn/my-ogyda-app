@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-  telegramId: String,
-  count: Number,
-  energy: Number,
+  telegramId: { type: String, required: true, unique: true },
+  clicks: { type: Number, default: 0 },
+  energy: { type: Number, default: 100 }
 });
 
 const User = mongoose.model('User', userSchema);
