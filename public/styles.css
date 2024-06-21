@@ -1,58 +1,32 @@
-/* styles.css */
-
 body {
-  font-family: Arial, sans-serif;
-  text-align: center; /* Центрування тексту */
-  background-color: #f0f0f0; /* Колір фону */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  margin: 0;
 }
 
-#game {
-  margin-top: 50px; /* Відступ зверху для центрування */
+.game-container {
+  text-align: center;
 }
 
 #click-button {
-  width: 200px; /* Ширина кнопки */
-  height: 200px; /* Висота кнопки */
-  border-radius: 50%; /* Зробити кнопку круглою */
-  font-size: 24px; /* Розмір тексту на кнопці */
-  touch-action: manipulation; /* Відключення масштабування на подвійне натискання */
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-#click-count, #energy {
-  font-size: 18px; /* Розмір тексту з кліками та енергією */
+#click-button img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }
 
-h1 {
-  font-size: 36px; /* Розмір заголовку */
+#score, #energy {
+  margin: 20px 0;
+  font-size: 1.5em;
 }
-
-/* Медіа-запит для мобільних пристроїв */
-@media only screen and (max-width: 600px) {
-  body {
-    background-color: #fff; /* Змінити фон на білий на мобільних пристроях */
-  }
-
-  #game {
-    margin-top: 20px; /* Зменшити відступ зверху */
-  }
-
-  #click-button {
-    width: 150px; /* Зменшити ширину кнопки */
-    height: 150px; /* Зменшити висоту кнопки */
-    border-radius: 50%; /* Зробити кнопку круглою */
-    font-size: 24px; /* Розмір тексту на кнопці */
-    touch-action: manipulation; /* Відключення масштабування на подвійне натискання */
-  }
-
-  #click-count, #energy {
-    font-size: 14px; /* Зменшити розмір тексту з кліками та енергією */
-  }
-
-  h1 {
-    font-size: 24px; /* Зменшити розмір заголовку */
-  }
-}
-
 
 
 

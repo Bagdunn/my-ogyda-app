@@ -30,7 +30,7 @@ app.get('/user/:telegramId', async (req, res) => {
   try {
     let user = await User.findOne({ telegramId: req.params.telegramId });
     if (!user) {
-      user = new User({ telegramId: req.params.telegramId, clicks: 0 });
+      user = new User({ telegramId: req.params.telegramId, clicks: 0, energy: 100 });
       await user.save();
     }
     res.status(200).send(user);
@@ -41,14 +41,15 @@ app.get('/user/:telegramId', async (req, res) => {
 
 // Маршрут для зберігання кліків
 app.post('/click', async (req, res) => {
-  const { telegramId, count } = req.body;
-  console.log(`Received click data: telegramId=${telegramId}, count=${count}`);
+  const { telegramId, count, energy } = req.body;
+  console.log(`Received click data: telegramId=${telegramId}, count=${count}, energy=${energy}`);
   try {
-    const user = await User.findOne({ telegramId });
+    let user = await User.findOne({ telegramId });
     if (!user) {
       return res.status(404).send('User not found');
     }
     user.clicks = count;
+    user.energy = energy;
     await user.save();
     res.status(200).send(user);
   } catch (error) {
