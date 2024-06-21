@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
           score = data.clicks;
           energy = data.energy;
           updateDisplay();
+      })
+      .catch(error => {
+          console.error('Error fetching user data:', error);
       });
 
   clickButton.addEventListener('click', () => {
@@ -40,6 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(response => response.json())
       .then(data => {
           console.log('Data saved:', data);
+      })
+      .catch(error => {
+          console.error('Error saving click data:', error);
       });
   }
 });
