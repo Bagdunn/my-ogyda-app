@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
           score = data.clicks || 0;
           energy = data.energy || 100;
           updateDisplay();
+          startEnergyRegeneration();
       })
       .catch(error => {
           console.error('Error fetching user data:', error);
@@ -49,4 +50,15 @@ document.addEventListener('DOMContentLoaded', () => {
           console.error('Error saving click data:', error);
       });
   }
+
+  function startEnergyRegeneration() {
+    setInterval(() => {
+        if (energy < 100) {
+            energy++;
+            updateDisplay();
+            saveData();
+        }
+    }, 2000); // Поповнення енергії кожні 2 секунди
+    }
+
 });
