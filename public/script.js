@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const telegramId = 'YOUR_TELEGRAM_ID'; // замініть на реальний ID
+    const tg = window.Telegram.WebApp;
+    const telegramId = tg.initDataUnsafe.user.id;
   const clickButton = document.getElementById('click-button');
   const scoreDisplay = document.getElementById('score');
   const energyDisplay = document.getElementById('energy');
