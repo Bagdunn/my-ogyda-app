@@ -1,7 +1,7 @@
 body {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   min-height: 100vh;
   margin: 0;
@@ -23,21 +23,27 @@ h1 {
 #click-button {
   width: 30vw; /* Ширина кнопки - 30% від ширини екрана */
   max-width: 120px; /* Максимальна ширина - 120px */
-  min-width: 30px; /* Мінімальна ширина - 60px */
+  min-width: 60px; /* Мінімальна ширина - 60px */
   height: 30vw; /* Висота кнопки - 30% від ширини екрана */
-  max-height: 60px; /* Максимальна висота - 120px */
-  min-height: 30px; /* Мінімальна висота - 60px */
+  max-height: 120px; /* Максимальна висота - 120px */
+  min-height: 60px; /* Мінімальна висота - 60px */
   border: none;
   border-radius: 50%;
-  background-color: #ff6600;
-  color: white;
-  font-size: 1.5em;
+  background-color: transparent; /* Зробимо фон прозорим, якщо використовуємо зображення */
   margin: 20px;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0;
+  box-shadow: none; /* Прибрати тінь, якщо використовуємо зображення */
+}
+
+#click-button img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%; /* Зробити зображення круглим */
+  object-fit: cover; /* Зберігати пропорції зображення */
 }
 
 #menu {
@@ -63,6 +69,5 @@ h1 {
   background-color: #ccc;
   margin: 0 10px;
 }
-
 /*touch-action: manipulation; /* Відключення масштабування на подвійне натискання */
     
