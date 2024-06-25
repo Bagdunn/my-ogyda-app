@@ -21,8 +21,10 @@ h1 {
 }
 
 #click-button {
-  width: 150px;
-  height: 150px;
+  width: 30vw; /* Ширина кнопки - 30% від ширини екрана */
+  max-width: 150px; /* Максимальна ширина - 150px */
+  height: 30vw; /* Висота кнопки - 30% від ширини екрана */
+  max-height: 150px; /* Максимальна висота - 150px */
   border: none;
   border-radius: 50%;
   background-color: #ff6600;
@@ -31,8 +33,10 @@ h1 {
   margin: 20px;
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 #menu {
   display: flex;
   justify-content: space-around;
