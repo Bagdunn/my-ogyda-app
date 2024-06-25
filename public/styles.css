@@ -1,33 +1,61 @@
 body {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  height: 100vh;
-  background-color: #f0f0f0;
+  min-height: 100vh;
   margin: 0;
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
 }
 
-.game-container {
-  text-align: center;
-}
-
-#click-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-#click-button img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+h1 {
+  margin: 20px 0;
+  color: #333;
 }
 
 #score, #energy {
-  margin: 20px 0;
+  margin: 10px;
   font-size: 1.5em;
+  color: #333;
 }
 
+#click-button {
+  width: 150px;
+  height: 150px;
+  border: none;
+  border-radius: 50%;
+  background-color: #ff6600;
+  color: white;
+  font-size: 1.5em;
+  margin: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#menu {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  background-color: #fff;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  border-top: 1px solid #ccc;
+}
+
+.menu-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.separator {
+  width: 1px;
+  height: 50px;
+  background-color: #ccc;
+  margin: 0 10px;
+}
 
 /*touch-action: manipulation; /* Відключення масштабування на подвійне натискання */
     
